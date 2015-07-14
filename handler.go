@@ -1,8 +1,8 @@
 package log
 
 import (
+	"fmt"
 	"log"
-	"strconv"
 	"strings"
 	"time"
 
@@ -18,60 +18,52 @@ func Use() {
 
 		c.Next()
 
-		log.Printf(colors.ResetAll+" %s  %s  %s  %s"+colors.ResetAll, fmtMethod(c), fmtPath(c), fmtStatus(c), fmtDuration(start))
+		log.Printf(colors.ResetAll+"  %s   %s   %s  %s", fmtDuration(start), fmtStatus(c), fmtMethod(c), fmtPath(c))
 	})
 }
 
-func fmtMethod(c *core.Context) string {
-	s := colors.ResetAll
-
-	switch strings.ToUpper(c.Request.Method) {
-	case "GET":
-		s += colors.Green + "GET"
-	case "POST":
-		s += colors.Cyan + "POST"
-	case "PUT":
-		s += colors.Blue + "PUT"
-	case "PATCH":
-		s += colors.Blue + "PATCH"
-	case "DELETE":
-		s += colors.Red + "DELETE"
-	case "HEAD":
-		s += colors.Magenta + "HEAD"
-	case "OPTIONS":
-		s += colors.Magenta + "OPTIONS"
-	case "TRACE":
-		s += colors.Magenta + "TRACE"
-	default:
-		s += colors.Red + colors.Blink + "UNKNOWN"
-	}
-
-	return s + colors.ResetAll
-}
-
-func fmtPath(c *core.Context) string {
-	return colors.ResetAll + c.Request.URL.String()
+func fmtDuration(start time.Time) string {
+	return fmt.Sprintf("%s%s%13s%s", colors.ResetAll, colors.ResetAll+colors.Dim, time.Since(start), colors.ResetAll)
 }
 
 func fmtStatus(c *core.Context) string {
 	code := coreutil.ResponseStatus(c.ResponseWriter)
 
-	s := colors.ResetAll
+	color := colors.White
 
 	switch {
 	case code >= 200 && code <= 299:
-		s += colors.Green
+		color += colors.BackgroundGreen
 	case code >= 300 && code <= 399:
-		s += colors.Cyan
+		color += colors.BackgroundCyan
 	case code >= 400 && code <= 499:
-		s += colors.Yellow
+		color += colors.BackgroundYellow
 	default:
-		s += colors.Red + colors.Blink
+		color += colors.BackgroundRed
 	}
 
-	return s + strconv.Itoa(code) + colors.ResetAll
+	return fmt.Sprintf("%s%s %3d %s", colors.ResetAll, color, code, colors.ResetAll)
 }
 
-func fmtDuration(start time.Time) string {
-	return colors.ResetAll + colors.Dim + time.Since(start).String() + colors.ResetAll
+func fmtMethod(c *core.Context) string {
+	method := strings.ToUpper(c.Request.Method)
+
+	var color string
+
+	switch method {
+	case "GET":
+		color += colors.Green
+	case "POST":
+		color += colors.Cyan
+	case "PUT", "PATCH":
+		color += colors.Blue
+	case "DELETE":
+		color += colors.Red
+	}
+
+	return fmt.Sprintf("%s%s%s%s", colors.ResetAll, color, method, colors.ResetAll)
+}
+
+func fmtPath(c *core.Context) string {
+	return fmt.Sprintf("%s%s%s%s", colors.ResetAll, colors.Dim, c.Request.URL, colors.ResetAll)
 }

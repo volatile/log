@@ -3,7 +3,7 @@
 Volatile Log is a handler for the [Core](https://github.com/volatile/core).  
 It prints each request/response information (time, method, path, status, duration) like this:
 
-![Example](https://cloud.githubusercontent.com/assets/9503891/8683039/a77213a6-2a70-11e5-8010-2c9b49a3e7b1.png)
+![Example](https://cloud.githubusercontent.com/assets/9503891/8686888/aab36d02-2a8a-11e5-82df-80195f34d1c2.png)
 
 ## Installation
 
