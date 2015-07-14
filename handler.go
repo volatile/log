@@ -36,10 +36,12 @@ func fmtMethod(c *core.Context) string {
 		s += colors.Blue + "PATCH"
 	case "DELETE":
 		s += colors.Red + "DELETE"
-	case "TRACE":
-		s += colors.Magenta + "TRACE"
+	case "HEAD":
+		s += colors.Magenta + "HEAD"
 	case "OPTIONS":
 		s += colors.Magenta + "OPTIONS"
+	case "TRACE":
+		s += colors.Magenta + "TRACE"
 	default:
 		s += colors.Red + colors.Blink + "UNKNOWN"
 	}
