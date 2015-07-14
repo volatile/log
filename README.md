@@ -3,6 +3,12 @@
 Volatile Log is a handler for the [Core](https://github.com/volatile/core).  
 It prints each request/response information (time, method, path, status, duration).
 
+## Installation
+
+```Shell
+$ go get -u github.com/volatile/log
+```
+
 ## Usage
 
 ```Go
