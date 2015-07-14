@@ -11,13 +11,15 @@ import (
 	"github.com/whitedevops/colors"
 )
 
-// Handler is usable by the core package in the handlers stack.
-var Handler = func(c *core.Context) {
-	start := time.Now()
+// Use tells the core to use this handler.
+func Use() {
+	core.Use(func(c *core.Context) {
+		start := time.Now()
 
-	c.Next()
+		c.Next()
 
-	log.Printf(colors.ResetAll+" %s  %s  %s  %s"+colors.ResetAll, fmtMethod(c), fmtPath(c), fmtStatus(c), fmtDuration(start))
+		log.Printf(colors.ResetAll+" %s  %s  %s  %s"+colors.ResetAll, fmtMethod(c), fmtPath(c), fmtStatus(c), fmtDuration(start))
+	})
 }
 
 func fmtMethod(c *core.Context) string {

@@ -17,7 +17,7 @@ Here is the classic "Hello, World!" example:
 
 	func main() {
 		if !core.Production {
-			core.Use(log.Handler)
+			log.Use()
 		}
 
 		core.Use(func(c *core.Context) {
