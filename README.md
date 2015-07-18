@@ -1,9 +1,9 @@
-<p align="center"><img src="https://cloud.githubusercontent.com/assets/9503891/8662627/09433de4-29c2-11e5-85c7-06e277aa750a.png" alt="Volatile Log" title="Volatile Log"><br><br></p>
+<p align="center"><img src="http://volatile.whitedevops.com/images/repositories/log/logo.png" alt="Volatile Log" title="Volatile Log"><br><br></p>
 
 Volatile Log is a handler for the [Core](https://github.com/volatile/core).  
 It prints each request/response information (time, method, path, status, duration) like this:
 
-![Example](https://cloud.githubusercontent.com/assets/9503891/8687763/c6126018-2a93-11e5-9684-f7099a5712ba.png)
+![Example](http://volatile.whitedevops.com/images/repositories/log/example.png)
 
 ## Installation
 
