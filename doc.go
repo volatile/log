@@ -4,7 +4,7 @@ It prints each request/response information (time, method, path, status, duratio
 
 Example
 
-Here is the classic "Hello, World!" example:
+"Hello, World!" example:
 
 	package main
 
