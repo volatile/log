@@ -3,7 +3,6 @@ package log
 import (
 	"fmt"
 	"log"
-	"strings"
 	"time"
 
 	"github.com/volatile/core"
@@ -46,11 +45,9 @@ func fmtStatus(c *core.Context) string {
 }
 
 func fmtMethod(c *core.Context) string {
-	method := strings.ToUpper(c.Request.Method)
-
 	var color string
 
-	switch method {
+	switch c.Request.Method {
 	case "GET":
 		color += colors.Green
 	case "POST":
@@ -61,7 +58,7 @@ func fmtMethod(c *core.Context) string {
 		color += colors.Red
 	}
 
-	return fmt.Sprintf("%s%s%s%s", colors.ResetAll, color, method, colors.ResetAll)
+	return fmt.Sprintf("%s%s%s%s", colors.ResetAll, color, c.Request.Method, colors.ResetAll)
 }
 
 func fmtPath(c *core.Context) string {
