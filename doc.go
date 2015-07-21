@@ -1,6 +1,6 @@
 /*
 Package log is a handler for the Core.
-It prints each request/response information (time, method, path, status, duration).
+It prints each request/response information (time, duration, status, method, path).
 
 Example
 
