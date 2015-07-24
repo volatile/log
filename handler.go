@@ -14,10 +14,12 @@ import (
 func Use() {
 	core.Use(func(c *core.Context) {
 		start := time.Now()
+		// Keep original request path in case of http.StripPrefix.
+		path := c.Request.URL.Path
 
 		c.Next()
 
-		log.Printf(colors.ResetAll+"  %s   %s   %s  %s", fmtDuration(start), fmtStatus(c), fmtMethod(c), fmtPath(c))
+		log.Printf(colors.ResetAll+"  %s   %s   %s  %s", fmtDuration(start), fmtStatus(c), fmtMethod(c), fmtPath(path))
 	})
 }
 
@@ -61,6 +63,6 @@ func fmtMethod(c *core.Context) string {
 	return fmt.Sprintf("%s%s%s%s", colors.ResetAll, color, c.Request.Method, colors.ResetAll)
 }
 
-func fmtPath(c *core.Context) string {
-	return fmt.Sprintf("%s%s%s%s", colors.ResetAll, colors.Dim, c.Request.URL, colors.ResetAll)
+func fmtPath(path string) string {
+	return fmt.Sprintf("%s%s%s%s", colors.ResetAll, colors.Dim, path, colors.ResetAll)
 }
