@@ -14,8 +14,7 @@ import (
 func Use() {
 	core.Use(func(c *core.Context) {
 		start := time.Now()
-		// Keep original request path in case of http.StripPrefix.
-		path := c.Request.URL.Path
+		path := c.Request.URL.Path // Keep original request path in case of http.StripPrefix.
 
 		c.Next()
 
