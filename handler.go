@@ -27,7 +27,7 @@ func fmtDuration(start time.Time) string {
 }
 
 func fmtStatus(c *core.Context) string {
-	code := coreutil.ResponseStatus(c.ResponseWriter)
+	code := coreutil.ResponseStatus(c)
 
 	color := colors.White
 
