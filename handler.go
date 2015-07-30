@@ -12,18 +12,20 @@ import (
 
 // Use tells the core to use this handler.
 func Use() {
+	fmt.Printf("%s%s Server running on %s%s%s %s %s\n\n", colors.ResetAll, colors.Reverse, colors.ResetAll, colors.BackgroundMagenta, colors.White, core.Address, colors.ResetAll)
+
 	core.Use(func(c *core.Context) {
 		start := time.Now()
 		path := c.Request.URL.Path // Keep original request path in case of http.StripPrefix.
 
 		c.Next()
 
-		log.Printf(colors.ResetAll+"  %s   %s   %s  %s", fmtDuration(start), fmtStatus(c), fmtMethod(c), fmtPath(path))
+		log.Printf("  %s   %s   %s  %s", fmtDuration(start), fmtStatus(c), fmtMethod(c), fmtPath(path))
 	})
 }
 
 func fmtDuration(start time.Time) string {
-	return fmt.Sprintf("%s%s%13s%s", colors.ResetAll, colors.ResetAll+colors.Dim, time.Since(start), colors.ResetAll)
+	return fmt.Sprintf("%s%s%13s%s", colors.ResetAll, colors.Dim, time.Since(start), colors.ResetAll)
 }
 
 func fmtStatus(c *core.Context) string {
