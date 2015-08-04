@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/volatile/core"
-	"github.com/volatile/core/coreutil"
+	"github.com/volatile/core/httputil"
 	"github.com/whitedevops/colors"
 )
 
@@ -29,7 +29,7 @@ func fmtDuration(start time.Time) string {
 }
 
 func fmtStatus(c *core.Context) string {
-	code := coreutil.ResponseStatus(c.ResponseWriter)
+	code := httputil.ResponseStatus(c.ResponseWriter)
 
 	color := colors.White
 
