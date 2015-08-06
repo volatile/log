@@ -8,10 +8,10 @@ It prints each request/response information (time, duration, status, method, pat
 ## Installation
 
 ```Shell
-$ go get -u github.com/volatile/log
+$ go get github.com/volatile/log
 ```
 
-## Usage
+## Usage [![GoDoc](https://godoc.org/github.com/volatile/log?status.svg)](https://godoc.org/github.com/volatile/log)
 
 ```Go
 package main
@@ -35,5 +35,3 @@ func main() {
 	core.Run()
 }
 ```
-
-[![GoDoc](https://godoc.org/github.com/volatile/log?status.svg)](https://godoc.org/github.com/volatile/log)

@@ -2,9 +2,9 @@
 Package log is a handler for the Core.
 It prints each request/response information (time, duration, status, method, path).
 
-Example
+Usage
 
-"Hello, World!" example:
+Example:
 
 	package main
 
