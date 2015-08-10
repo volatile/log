@@ -2,6 +2,12 @@
 Package log is a handler for the Core (https://github.com/volatile/core).
 It prints each request/response information (time, duration, status, method, path).
 
+Installation
+
+In the terminal:
+
+	$ go get github.com/volatile/log
+
 Usage
 
 Example:
