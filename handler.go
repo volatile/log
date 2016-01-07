@@ -20,9 +20,9 @@ func Use() {
 		start := time.Now()
 		path := c.Request.URL.Path // Keep original request path in case of http.StripPrefix.
 
+		defer log.Printf("  %s   %s   %s  %s", fmtDuration(start), fmtStatus(c), fmtMethod(c), fmtPath(path))
+		defer c.Recover()
 		c.Next()
-
-		log.Printf("  %s   %s   %s  %s", fmtDuration(start), fmtStatus(c), fmtMethod(c), fmtPath(path))
 	})
 }
 
