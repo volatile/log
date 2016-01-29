@@ -4,7 +4,7 @@ It prints each request/response information (time, duration, status, method, pat
 
 Usage
 
-Use adds a handler to the default handlers stack:
+Use adds the handler to the default handlers stack:
 
 	log.Use()
 
