@@ -2,35 +2,12 @@
 Package log is a handler for the Core (https://github.com/volatile/core).
 It prints each request/response information (time, duration, status, method, path).
 
-Installation
-
-In the terminal:
-
-	$ go get github.com/volatile/log
-
 Usage
 
-Example:
+Use adds a handler to the default handlers stack:
 
-	package main
+	log.Use()
 
-	import (
-		"fmt"
-
-		"github.com/volatile/core"
-		"github.com/volatile/log"
-	)
-
-	func main() {
-		if !core.Production {
-			log.Use()
-		}
-
-		core.Use(func(c *core.Context) {
-			fmt.Fprint(c.ResponseWriter, "Hello, World!")
-		})
-
-		core.Run()
-	}
+Make sure to include the handler above any other handler.
 */
 package log

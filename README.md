@@ -1,37 +1,6 @@
-<p align="center"><img src="http://volatile.whitedevops.com/images/repositories/log/logo.png" alt="Volatile Log" title="Volatile Log"><br><br></p>
+<p align="center"><a href="https://godoc.org/github.com/volatile/log"><img src="http://volatile.whitedevops.com/images/repositories/log/logo.png" alt="log" title="log"></a><br><br></p>
 
-Volatile Log is a handler for the [Core](https://github.com/volatile/core).  
-It prints each request/response information (time, duration, status, method, path) like this:
+Package [log](https://godoc.org/github.com/volatile/log) is a handler for the [core](https://godoc.org/github.com/volatile/core).  
+It prints each request/response information (time, duration, status, method, path).
 
-![Example](http://volatile.whitedevops.com/images/repositories/log/example.png)
-
-## Installation
-
-```Shell
-$ go get github.com/volatile/log
-```
-
-## Usage [![GoDoc](https://godoc.org/github.com/volatile/log?status.svg)](https://godoc.org/github.com/volatile/log)
-
-```Go
-package main
-
-import (
-	"fmt"
-
-	"github.com/volatile/core"
-	"github.com/volatile/log"
-)
-
-func main() {
-	if !core.Production {
-		log.Use()
-	}
-
-	core.Use(func(c *core.Context) {
-		fmt.Fprint(c.ResponseWriter, "Hello, World!")
-	})
-
-	core.Run()
-}
-```
+[![GoDoc](https://godoc.org/github.com/volatile/log?status.svg)](https://godoc.org/github.com/volatile/log)

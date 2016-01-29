@@ -10,7 +10,8 @@ import (
 	"github.com/whitedevops/colors"
 )
 
-// Use tells the core to use this handler.
+// Use adds a handler to the default handlers stack.
+// It prints each request/response information (time, duration, status, method, path).
 func Use() {
 	core.BeforeRun(func() {
 		fmt.Printf("%s%s Server running on %s%s%s %s %s\n\n", colors.ResetAll, colors.Reverse, colors.ResetAll, colors.BackgroundMagenta, colors.White, core.Address, colors.ResetAll)
