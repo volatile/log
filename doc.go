@@ -5,7 +5,6 @@ It prints each request/response information (time, duration, status, method, pat
 Usage
 
 Use adds the handler to the default handlers stack:
-
 	log.Use()
 
 Make sure to include the handler above any other handler.
